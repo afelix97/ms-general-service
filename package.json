@@ -31,7 +31,7 @@
     "scripts": {
         "dev": "nodemon --exec ts-node src/index.ts",
         "start": "ts-node src/index.ts",
-        "build": "tsc -p . && npm run create-dir && npm run copy-json",
+        "build": "tsc -p .",
         "create-dir": "mkdir -p dist/database",
         "copy-json": "cp src/database/usuarios.json dist/database/usuarios.json"
     },
