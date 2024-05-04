@@ -114,7 +114,64 @@ export class GeneralController {
         }
     }
 
+
+    async deleteComment(request: Request, response: Response, next: NextFunction) {
+        let statusCode: number = 0;
+        var dataResponse: boolean = false;
+        try {
+            let now: Date = new Date();
+            let completeDateFormat: string = dateFormat(now, "yyyy-mm-dd HH:MM:ss.l");
+
+
+            const commentId: number = parseInt(request.params.id);
+
+            var msgLog: string = "::" + process.pid + "::" + completeDateFormat + "::" + process.env.APP_GENERALSERVICE_NAME + ":: ";
+
+            console.log(msgLog + "[GeneralController.deleteComment]:: REQUEST: " + JSON.stringify(request.params));
+
+            if (!isNaN(commentId)) {
+
+                try {
+                    const users: User[] = getUsersFromFile(filePath);
+                    // Eliminar el elemento con ese id
+                    const filteredUsers: User[] = users.filter(user => user.id !== commentId);
+                   
+                    if (filteredUsers.length === users.length) {
+                        // No se encontró ningún comentario con el ID especificado
+                        statusCode = 404;
+                    } else {
+                        fs.writeFileSync(filePath, JSON.stringify(filteredUsers, null, 2));
+                        console.log('Comentario eliminado correctamente.');
+                        dataResponse = true;
+                        statusCode = 200;
+                    }
+                } catch (error) {
+                    console.error(msgLog + "[GeneralController.deleteComment]:: Error al guardar usuarios en el archivo:" + JSON.stringify(error));
+                    statusCode = 500;
+                }
+            }
+            else {
+                statusCode = 400;
+            }
+
+            console.log(msgLog + "[GeneralController.deleteComment]:: RESPONSE: " + JSON.stringify(dataResponse));
+        }
+        catch (error) {
+            statusCode = 500;
+            console.error(msgLog + "[GeneralController.deleteComment]:: error: " + JSON.stringify(error));
+        }
+        finally {
+            if (statusCode !== 200) {
+                response.status(statusCode).send();
+            }
+            else {
+                response.status(statusCode).json(dataResponse);
+            }
+        }
+    }
+
 }
+
 
 // Función para leer el archivo JSON y devolver los usuarios
 function getUsersFromFile(filePath: string): User[] {

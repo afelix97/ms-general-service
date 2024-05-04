@@ -11,5 +11,11 @@ export const Routes = [{
     route: process.env.APP_GENERALSERVICE_ROUTE_ADDCOMMENT,
     controller: GeneralController,
     action: "addComment"
+}, {
+    method: "delete",
+    route: process.env.APP_GENERALSERVICE_ROUTE_DELETECOMMENT,
+    controller: GeneralController,
+    action: "deleteComment"
 }
 ];
+
