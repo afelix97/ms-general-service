@@ -1,0 +1,67 @@
+{
+    "name": "ms-genaral-service",
+    "version": "0.0.1",
+    "description": "Microservicio para pruebas funcionales",
+    "devDependencies": {
+        "@types/del": "^4.0.0",
+        "@types/express": "^4.17.21",
+        "@types/lokijs": "^1.5.2",
+        "@types/multer": "^1.3.7",
+        "@types/node": "^20.12.7",
+        "nodemon": "^3.0.2",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.3.3",
+        "yaml-lint": "^1.2.4"
+    },
+    "dependencies": {
+        "ajv": "^8.12.0",
+        "axios": "^1.6.2",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dateformat": "^4.6.3",
+        "dotenv": "^16.4.5",
+        "express": "^4.17.1",
+        "pg": "^8.11.0",
+        "reflect-metadata": "^0.1.13",
+        "superagent": "^9.0.1",
+        "typeorm": "^0.3.20",
+        "typeorm-encrypted": "^0.8.0",
+        "uuid": "^9.0.1"
+    },
+    "scripts": {
+        "dev": "nodemon --exec ts-node src/index.ts",
+        "start": "ts-node src/index.ts",
+        "build": "tsc -p ."
+    },
+    "jsonwebtoken": {
+        "version": "7.4.3",
+        "resolved": "https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-7.4.3.tgz",
+        "integrity": "sha1-d/UCHeBYtgWheD+hKD6ZgS5kVjg=",
+        "requires": {
+            "joi": "^6.10.1",
+            "jws": "^3.1.4",
+            "lodash.once": "^4.0.0",
+            "ms": "^2.0.0",
+            "xtend": "^4.0.1"
+        }
+    },
+    "jwa": {
+        "version": "1.1.6",
+        "resolved": "https://registry.npmjs.org/jwa/-/jwa-1.1.6.tgz",
+        "integrity": "sha512-tBO/cf++BUsJkYql/kBbJroKOgHWEigTKBAjjBEmrMGYd1QMBC74Hr4Wo2zCZw6ZrVhlJPvoMrkcOnlWR/DJfw==",
+        "requires": {
+            "buffer-equal-constant-time": "1.0.1",
+            "ecdsa-sig-formatter": "1.0.10",
+            "safe-buffer": "^5.0.1"
+        }
+    },
+    "jws": {
+        "version": "3.1.5",
+        "resolved": "https://registry.npmjs.org/jws/-/jws-3.1.5.tgz",
+        "integrity": "sha512-GsCSexFADNQUr8T5HPJvayTjvPIfoyJPtLQBwn5a4WZQchcrPMPMAWcC1AzJVRDKyD6ZPROPAxgv6rfHViO4uQ==",
+        "requires": {
+            "jwa": "^1.1.5",
+            "safe-buffer": "^5.0.1"
+        }
+    }
+}
